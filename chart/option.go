@@ -45,29 +45,24 @@ type toolboxFeature struct {
 
 // saveAsImageFeature - 画像保存機能
 type saveAsImageFeature struct {
-	Show  bool   `json:"show,omitempty"`  // 表示するか
-	Title string `json:"title,omitempty"` // タイトル
+	Show bool `json:"show,omitempty"` // 表示するか
 }
 
 // dataViewFeature - データの閲覧機能
 type dataViewFeature struct {
-	Show     bool      `json:"show,omitempty"`     // 表示するか
-	Title    string    `json:"title,omitempty"`    // タイトル
-	Lang     [3]string `json:"lang,omitempty"`     // ボタン
-	ReadOnly bool      `json:"readOnly,omitempty"` // 読み込み専用か
+	Show     bool `json:"show,omitempty"`     // 表示するか
+	ReadOnly bool `json:"readOnly,omitempty"` // 読み込み専用か
 }
 
 // magicTypeFeature - シリーズ種別の変更機能
 type magicTypeFeature struct {
-	Show  bool         `json:"show,omitempty"`  // 表示するか
-	Title string       `json:"title,omitempty"` // タイトル
-	Type  []SeriesType `json:"type,omitempty"`  // 選べるシリーズ種別
+	Show bool         `json:"show,omitempty"` // 表示するか
+	Type []SeriesType `json:"type,omitempty"` // 選べるシリーズ種別
 }
 
 // restoreFeature - 元に戻す機能
 type restoreFeature struct {
-	Show  bool   `json:"show,omitempty"`  // 表示するか
-	Title string `json:"title,omitempty"` // タイトル
+	Show bool `json:"show,omitempty"` // 表示するか
 }
 
 // axis - 軸

@@ -19,10 +19,10 @@ func mixLineBar(w http.ResponseWriter, _ *http.Request) {
 		SetSeries("s2", chart.SeriesTypeBar, []interface{}{2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3}, &chart.SeriesBaseOpt{Name: "降水量"}).
 		SetSeries("s3", chart.SeriesTypeLine, []interface{}{2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2}, &chart.SeriesBaseOpt{Name: "平均温度", YAxisIndex: 1}).
 		SetToolboxFeature(
-			&chart.DataViewFeatureOpt{Show: true, Title: "データ", Lang: [3]string{"データ", "閉じる", "更新"}, ReadOnly: false},
-			&chart.MagicTypeFeatureOpt{Show: true, Title: "グラフ", Type: []chart.SeriesType{chart.SeriesTypeLine, chart.SeriesTypeBar}},
-			&chart.RestoreFeatureOpt{Show: true, Title: "リセット"},
-			&chart.SaveAsImageFeatureOpt{Show: true, Title: "保存"}).
+			&chart.DataViewFeatureOpt{Show: true, ReadOnly: false},
+			&chart.MagicTypeFeatureOpt{Show: true, Type: []chart.SeriesType{chart.SeriesTypeLine, chart.SeriesTypeBar}},
+			&chart.RestoreFeatureOpt{Show: true},
+			&chart.SaveAsImageFeatureOpt{Show: true}).
 		Render(w)
 	if err != nil {
 		log.Println(err)
