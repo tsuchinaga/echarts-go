@@ -2,8 +2,6 @@
 
 公式にあったチャートを描いてみる
 
-[tsuchinaga / echarts-go · GitLab](https://gitlab.com/tsuchinaga/echarts-go)
-
 ## 起動
 `go run examples/example.go -p 8080`
 
