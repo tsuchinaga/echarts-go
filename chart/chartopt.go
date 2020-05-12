@@ -68,3 +68,25 @@ func (o *TooltipCrossPointerOpt) setOpt(option *option) {
 		CrossStyle: &axisStyle{Color: o.Color},
 	}
 }
+
+type GridOpt struct {
+	chartOpt
+	Left         string // 左
+	Top          string // 上
+	Right        string // 右
+	Bottom       string // 下
+	ContainLabel Bool   // グリッド領域に軸目盛を含めるか
+}
+
+func (o *GridOpt) getChartOptType() string {
+	return "grid"
+}
+func (o *GridOpt) setOpt(option *option) {
+	option.Grid = &grid{
+		Left:         o.Left,
+		Top:          o.Top,
+		Right:        o.Right,
+		Bottom:       o.Bottom,
+		ContainLabel: o.ContainLabel,
+	}
+}

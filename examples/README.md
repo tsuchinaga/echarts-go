@@ -24,6 +24,7 @@
     * [Confidence Band](https://echarts.apache.org/examples/en/editor.html?c=confidence-band)
         * [http://localhost:8080/confidence-band](http://localhost:8080/confidence-band)
         * [confidenceband.go](confidenceband.go)
+        * ※ラベルのフォーマッタなどで無名関数を使っている部分が実現できないためにY軸とかおかしい
 * Bar
     * [Bar Simple](https://echarts.apache.org/examples/en/editor.html?c=bar-simple)
         * [http://localhost:8080/bar-simple](http://localhost:8080/bar-simple)

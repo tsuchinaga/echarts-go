@@ -4,6 +4,7 @@ package chart
 type option struct {
 	Title   *title    `json:"title,omitempty"`   // タイトル
 	Legend  *legend   `json:"legend,omitempty"`  // 凡例
+	Grid    *grid     `json:"grid,omitempty"`    // グリッド
 	XAxis   []*axis   `json:"xAxis"`             // X軸
 	YAxis   []*axis   `json:"yAxis"`             // Y軸
 	Tooltip *tooltip  `json:"tooltip,omitempty"` // ツールチップ
@@ -24,6 +25,14 @@ type legend struct {
 	Type string   `json:"type,omitempty"` // 種別
 	Id   string   `json:"id,omitempty"`   // ID
 	Data []string `json:"data,omitempty"` // 凡例
+}
+
+type grid struct {
+	Left         string `json:"left,omitempty"`         // 左
+	Top          string `json:"top,omitempty"`          // 上
+	Right        string `json:"right,omitempty"`        // 右
+	Bottom       string `json:"bottom,omitempty"`       // 下
+	ContainLabel Bool   `json:"containLabel,omitempty"` // グリッド領域に軸目盛を含めるか
 }
 
 // tooltip - ツールチップ
@@ -86,7 +95,7 @@ type axis struct {
 
 // axisLabel - 軸のラベル
 type axisLabel struct {
-	Formatter string `json:"formatter,omitempty"` // フォーマッター
+	Formatter interface{} `json:"formatter,omitempty"` // フォーマッター
 }
 
 // axisPointer - 軸ポインタ
