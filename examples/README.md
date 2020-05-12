@@ -3,7 +3,7 @@
 公式にあったチャートを描いてみる
 
 ## 起動
-`go run examples/example.go -p 8080`
+`go run examples/* -p 8080`
 
 `-p`で指定したポート番号でWebサーバが立ちます(省略した場合は8080)
 
@@ -21,6 +21,9 @@
     * [Smoothed Line Chart](https://echarts.apache.org/examples/en/editor.html?c=line-smooth)
         * [http://localhost:8080/line-smooth](http://localhost:8080/line-smooth)
         * [linesmooth.go](linesmooth.go)
+    * [Confidence Band](https://echarts.apache.org/examples/en/editor.html?c=confidence-band)
+        * [http://localhost:8080/confidence-band](http://localhost:8080/confidence-band)
+        * [confidenceband.go](confidenceband.go)
 * Bar
     * [Bar Simple](https://echarts.apache.org/examples/en/editor.html?c=bar-simple)
         * [http://localhost:8080/bar-simple](http://localhost:8080/bar-simple)
