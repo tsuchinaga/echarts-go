@@ -8,15 +8,17 @@ type chartOpt interface {
 // TitleOpt - タイトルに関する設定
 type TitleOpt struct {
 	chartOpt
-	Id   string // ID
-	Text string // テキスト
+	Id      string // ID
+	Text    string // タイトル
+	Subtext string // サブタイトル
+	Left    string // 左からの位置
 }
 
 func (o *TitleOpt) getChartOptType() string {
 	return "title"
 }
 func (o *TitleOpt) setOpt(option *option) {
-	option.Title = &title{Id: o.Id, Text: o.Text}
+	option.Title = &title{Id: o.Id, Text: o.Text, Subtext: o.Subtext, Left: o.Left}
 }
 
 // LegendOpt - 凡例に関する設定
@@ -37,14 +39,15 @@ func (o *LegendOpt) setOpt(option *option) {
 // TooltipBaseOpt - ツールチップに関する設定
 type TooltipBaseOpt struct {
 	chartOpt
-	Trigger TooltipTrigger // トリガー
+	Trigger   TooltipTrigger // トリガー
+	Formatter string         // フォーマッター
 }
 
 func (o *TooltipBaseOpt) getChartOptType() string {
 	return "tooltipBase"
 }
 func (o *TooltipBaseOpt) setOpt(option *option) {
-	option.Tooltip = &tooltip{Trigger: o.Trigger}
+	option.Tooltip = &tooltip{Trigger: o.Trigger, Formatter: o.Formatter}
 }
 
 // TooltipCrossPointerOpt - ツールチップのクロスポインタに関する設定

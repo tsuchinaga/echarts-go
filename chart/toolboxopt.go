@@ -8,7 +8,7 @@ type toolboxOpt interface {
 // SaveAsImageFeatureOpt - 画像保存機能に関する設定
 type SaveAsImageFeatureOpt struct {
 	toolboxOpt
-	Show bool // 表示するか
+	Show Bool // 表示するか
 }
 
 func (o *SaveAsImageFeatureOpt) getToolboxOptType() string {
@@ -24,8 +24,8 @@ func (o *SaveAsImageFeatureOpt) setOpt(toolbox *toolbox) {
 // DataViewFeatureOpt - データ閲覧機能に関する設定
 type DataViewFeatureOpt struct {
 	toolboxOpt
-	Show     bool // 表示するか
-	ReadOnly bool // 読み込み専用か
+	Show     Bool // 表示するか
+	ReadOnly Bool // 読み込み専用か
 }
 
 func (o *DataViewFeatureOpt) getToolboxOptType() string {
@@ -41,7 +41,7 @@ func (o *DataViewFeatureOpt) setOpt(toolbox *toolbox) {
 // MagicTypeFeatureOpt - シリーズ種別変更に関する設定
 type MagicTypeFeatureOpt struct {
 	toolboxOpt
-	Show bool         // 表示するか
+	Show Bool         // 表示するか
 	Type []SeriesType // 選べるシリーズ種別
 }
 
@@ -58,7 +58,7 @@ func (o *MagicTypeFeatureOpt) setOpt(toolbox *toolbox) {
 // RestoreFeatureOpt - 元のチャートに戻す機能に関する設定
 type RestoreFeatureOpt struct {
 	toolboxOpt
-	Show bool // 表示するか
+	Show Bool // 表示するか
 }
 
 func (o *RestoreFeatureOpt) getToolboxOptType() string {

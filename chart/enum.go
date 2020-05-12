@@ -1,5 +1,30 @@
 package chart
 
+// Bool - 真偽値
+type Bool string
+
+const (
+	BoolEmpty Bool = ""
+	BoolNull  Bool = "null"
+	True      Bool = "true"
+	False     Bool = "false"
+)
+
+func (e Bool) String() string {
+	return string(e)
+}
+
+func (e Bool) MarshalJSON() ([]byte, error) {
+	switch e {
+	case True:
+		return []byte("true"), nil
+	case False:
+		return []byte("false"), nil
+	default:
+		return []byte("null"), nil
+	}
+}
+
 // AxisType - 軸の種別
 type AxisType string
 
@@ -78,5 +103,25 @@ const (
 )
 
 func (e TooltipTrigger) String() string {
+	return string(e)
+}
+
+// SymbolType - シンボルの形
+type SymbolType string
+
+const (
+	SymbolTypeEmpty     SymbolType = ""
+	SymbolTypeNull      SymbolType = "null"
+	SymbolTypeNone      SymbolType = "none"
+	SymbolTypeCircle    SymbolType = "circle"
+	SymbolTypeRect      SymbolType = "rect"
+	SymbolTypeRoundRect            = "roundRect"
+	SymbolTypeTriangle  SymbolType = "triangle"
+	SymbolTypeDiamond   SymbolType = "diamond"
+	SymbolTypePin       SymbolType = "pin"
+	SymbolTypeArrow     SymbolType = "arrow"
+)
+
+func (e SymbolType) String() string {
 	return string(e)
 }

@@ -8,10 +8,12 @@ type axisOpt interface {
 // AxisBaseOpt - 軸の基本的な設定
 type AxisBaseOpt struct {
 	axisOpt
-	Name     string // 名前
-	Min      string // 最小
-	Max      string // 最大
-	Interval int    // 間隔
+	Name        string // 名前
+	Min         string // 最小
+	Max         string // 最大
+	Interval    int    // 間隔
+	SplitNumber int    // 分割
+	BoundaryGap Bool   // 境界部分のギャップ
 }
 
 func (o *AxisBaseOpt) getAxisOptType() string {
@@ -23,6 +25,8 @@ func (o *AxisBaseOpt) setOpt(axis *axis) {
 	axis.Min = o.Min
 	axis.Max = o.Max
 	axis.Interval = o.Interval
+	axis.SplitNumber = o.SplitNumber
+	axis.BoundaryGap = o.BoundaryGap
 }
 
 // AxisPointerOpt - 軸ポインタの設定
@@ -51,4 +55,18 @@ func (o *AxisLabelOpt) getAxisOptType() string {
 
 func (o *AxisLabelOpt) setOpt(axis *axis) {
 	axis.AxisLabel = &axisLabel{Formatter: o.Formatter}
+}
+
+// SplitLineOpt - 分割線の設定
+type SplitLineOpt struct {
+	axisOpt
+	Show Bool // 表示するか
+}
+
+func (o *SplitLineOpt) getAxisOptType() string {
+	return "splitLine"
+}
+
+func (o *SplitLineOpt) setOpt(axis *axis) {
+	axis.SplitLine = &splitLine{Show: o.Show}
 }

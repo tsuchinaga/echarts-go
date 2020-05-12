@@ -20,6 +20,7 @@ func main() {
 		"bar-simple":         barSimple,
 		"candlestick-simple": candlestickSimple,
 		"mix-line-bar":       mixLineBar,
+		"confidence-band":    confidenceBand,
 	}
 	for path, f := range routeMap {
 		http.HandleFunc("/"+path, f)
