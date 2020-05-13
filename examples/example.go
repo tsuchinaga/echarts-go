@@ -17,10 +17,11 @@ func main() {
 		"get-started":        getStarted,
 		"line-simple":        lineSimple,
 		"line-smooth":        lineSmooth,
+		"confidence-band":    confidenceBand,
 		"bar-simple":         barSimple,
 		"candlestick-simple": candlestickSimple,
+		"candlestick-large":  candlestickLarge,
 		"mix-line-bar":       mixLineBar,
-		"confidence-band":    confidenceBand,
 	}
 	for path, f := range routeMap {
 		http.HandleFunc("/"+path, f)

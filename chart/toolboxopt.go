@@ -38,6 +38,22 @@ func (o *DataViewFeatureOpt) setOpt(toolbox *toolbox) {
 	toolbox.Feature.DataView = &dataViewFeature{Show: o.Show, ReadOnly: o.ReadOnly}
 }
 
+// DataZoomFeatureOpt - データズーム機能に関する設定
+type DataZoomFeatureOpt struct {
+	toolboxOpt
+	YAxisIndex Bool // Y軸
+}
+
+func (o *DataZoomFeatureOpt) getToolboxOptType() string {
+	return "dataZoom"
+}
+func (o *DataZoomFeatureOpt) setOpt(toolbox *toolbox) {
+	if toolbox.Feature == nil {
+		toolbox.Feature = new(toolboxFeature)
+	}
+	toolbox.Feature.DataZoom = &dataZoomFeature{YAxisIndex: o.YAxisIndex}
+}
+
 // MagicTypeFeatureOpt - シリーズ種別変更に関する設定
 type MagicTypeFeatureOpt struct {
 	toolboxOpt
