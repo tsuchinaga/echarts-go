@@ -21,6 +21,7 @@ func main() {
 		"bar-simple":         barSimple,
 		"candlestick-simple": candlestickSimple,
 		"candlestick-large":  candlestickLarge,
+		"candlestick-brush":  candlestickBrush,
 		"mix-line-bar":       mixLineBar,
 	}
 	for path, f := range routeMap {

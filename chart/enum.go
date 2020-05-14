@@ -125,3 +125,20 @@ const (
 func (e SymbolType) String() string {
 	return string(e)
 }
+
+// BrushType - ブラシのタイプ
+type BrushType string
+
+const (
+	BrushTypeEmpty   BrushType = ""
+	BrushTypeNull    BrushType = "null"
+	BrushTypeRect    BrushType = "rect"
+	BrushTypePolygon BrushType = "polygon"
+	BrushTypeLineX   BrushType = "lineX"
+	BrushTypeLineY   BrushType = "lineY"
+	BrushTypeClear   BrushType = "clear"
+)
+
+func (e BrushType) String() string {
+	return string(e)
+}

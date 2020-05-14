@@ -2,16 +2,19 @@ package chart
 
 // Option - チャートのオプション
 type option struct {
-	Title    *title      `json:"title,omitempty"`    // タイトル
-	Legend   *legend     `json:"legend,omitempty"`   // 凡例
-	Grid     []*grid     `json:"grid,omitempty"`     // グリッド
-	XAxis    []*axis     `json:"xAxis"`              // X軸
-	YAxis    []*axis     `json:"yAxis"`              // Y軸
-	Tooltip  *tooltip    `json:"tooltip,omitempty"`  // ツールチップ
-	Toolbox  *toolbox    `json:"toolbox,omitempty"`  // ツールボックス
-	DataZoom []*dataZoom `json:"dataZoom,omitempty"` // ツールボックス
-	Dataset  *dataset    `json:"dataset,omitempty"`  // データセット
-	Series   []*series   `json:"series"`             // シリーズ
+	Title           *title       `json:"title,omitempty"`           // タイトル
+	Legend          *legend      `json:"legend,omitempty"`          // 凡例
+	Grid            []*grid      `json:"grid,omitempty"`            // グリッド
+	XAxis           []*axis      `json:"xAxis"`                     // X軸
+	YAxis           []*axis      `json:"yAxis"`                     // Y軸
+	Tooltip         *tooltip     `json:"tooltip,omitempty"`         // ツールチップ
+	Toolbox         *toolbox     `json:"toolbox,omitempty"`         // ツールボックス
+	AxisPointer     *axisPointer `json:"axisPointer,omitempty"`     // 軸ポインタの設定
+	DataZoom        []*dataZoom  `json:"dataZoom,omitempty"`        // ツールボックス
+	Dataset         *dataset     `json:"dataset,omitempty"`         // データセット
+	Series          []*series    `json:"series"`                    // シリーズ
+	BackgroundColor string       `json:"backgroundColor,omitempty"` // 背景色
+	Animation       Bool         `json:"animation,omitempty"`       // アニメーションするか
 }
 
 // title - タイトル
@@ -24,9 +27,13 @@ type title struct {
 
 // legend - 凡例
 type legend struct {
-	Type string   `json:"type,omitempty"` // 種別
-	Id   string   `json:"id,omitempty"`   // ID
-	Data []string `json:"data,omitempty"` // 凡例
+	Type   string   `json:"type,omitempty"`   // 種別
+	Id     string   `json:"id,omitempty"`     // ID
+	Left   string   `json:"left,omitempty"`   // 左からの位置
+	Top    string   `json:"top,omitempty"`    // 上からの位置
+	Right  string   `json:"right,omitempty"`  // 右からの位置
+	Bottom string   `json:"bottom,omitempty"` // 下からの位置
+	Data   []string `json:"data,omitempty"`   // 凡例
 }
 
 type grid struct {
@@ -41,9 +48,19 @@ type grid struct {
 
 // tooltip - ツールチップ
 type tooltip struct {
-	Trigger     TooltipTrigger `json:"trigger,omitempty"`     // トリガー
-	AxisPointer *axisPointer   `json:"axisPointer,omitempty"` // 軸ポインタ
-	Formatter   string         `json:"formatter,omitempty"`   // フォーマッター
+	Trigger         TooltipTrigger `json:"trigger,omitempty"`         // トリガー
+	BackgroundColor string         `json:"backgroundColor,omitempty"` // 背景色
+	BorderWidth     string         `json:"borderWidth,omitempty"`     // 境界線の幅
+	BorderColor     string         `json:"borderColor,omitempty"`     // 境界線の色
+	Padding         string         `json:"padding,omitempty"`         // 余白
+	AxisPointer     *axisPointer   `json:"axisPointer,omitempty"`     // 軸ポインタ
+	TextStyle       *textStyle     `json:"textStyle,omitempty"`       // テキストのスタイル
+	Formatter       string         `json:"formatter,omitempty"`       // フォーマッター
+}
+
+// textStyle - テキストのスタイル
+type textStyle struct {
+	Color string `json:"color,omitempty"`
 }
 
 // toolbox - ツールボックス
@@ -58,6 +75,7 @@ type toolboxFeature struct {
 	DataZoom    *dataZoomFeature    `json:"dataZoom,omitempty"`
 	MagicType   *magicTypeFeature   `json:"magicType,omitempty"`
 	Restore     *restoreFeature     `json:"restore,omitempty"`
+	Brush       *brushFeature       `json:"brush,omitempty"`
 }
 
 // saveAsImageFeature - 画像保存機能
@@ -87,14 +105,20 @@ type restoreFeature struct {
 	Show Bool `json:"show,omitempty"` // 表示するか
 }
 
+// brushFeature - ブラシ機能
+type brushFeature struct {
+	Type []BrushType `json:"type"`
+}
+
 // dataZoom - データの拡大縮小
 type dataZoom struct {
 	Type       string `json:"type,omitempty"`       // 種別
 	Show       Bool   `json:"show,omitempty"`       // 表示するか
 	XAxisIndex []int  `json:"xAxisIndex,omitempty"` //
+	Top        string `json:"top,omitempty"`        //
 	Bottom     string `json:"bottom,omitempty"`     //
-	Start      string `json:"start,omitempty"`      //
-	End        string `json:"end,omitempty"`        //
+	Start      int    `json:"start,omitempty"`      //
+	End        int    `json:"end,omitempty"`        //
 	HandleIcon string `json:"handleIcon,omitempty"` //
 	HandleSize string `json:"handleSize,omitempty"` //
 }
@@ -140,7 +164,14 @@ type axisLabel struct {
 // axisPointer - 軸ポインタ
 type axisPointer struct {
 	Type       AxisPointerType `json:"type,omitempty"`       // 種別
+	Z          int             `json:"z,omitempty"`          // 奥行
 	CrossStyle *axisStyle      `json:"crossStyle,omitempty"` // クロスポインタのスタイル
+	Link       *link           `json:"link,omitempty"`       // リンク
+}
+
+// link - リンクさせる軸線
+type link struct {
+	XAxisIndex []int `json:"xAxisIndex,omitempty"` // リンクさせるX軸
 }
 
 // axisStyle - 軸のスタイル

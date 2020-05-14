@@ -5,6 +5,21 @@ type chartOpt interface {
 	setOpt(option *option)
 }
 
+// BaseOpt - チャートオプションの基本的な設定
+type BaseOpt struct {
+	chartOpt
+	BackgroundColor string // 背景色
+	Animation       Bool   // アニメーションするか
+}
+
+func (o *BaseOpt) getChartOptType() string {
+	return "base"
+}
+func (o *BaseOpt) setOpt(option *option) {
+	option.BackgroundColor = o.BackgroundColor
+	option.Animation = o.Animation
+}
+
 // TitleOpt - タイトルに関する設定
 type TitleOpt struct {
 	chartOpt
@@ -24,30 +39,55 @@ func (o *TitleOpt) setOpt(option *option) {
 // LegendOpt - 凡例に関する設定
 type LegendOpt struct {
 	chartOpt
-	Type string   // 種別
-	Id   string   // ID
-	Data []string // 凡例
+	Type   string   // 種別
+	Id     string   // ID
+	Left   string   // 左からの位置
+	Top    string   // 上からの位置
+	Right  string   // 右からの位置
+	Bottom string   // 下からの位置
+	Data   []string // 凡例
 }
 
 func (o *LegendOpt) getChartOptType() string {
 	return "legend"
 }
 func (o *LegendOpt) setOpt(option *option) {
-	option.Legend = &legend{Type: o.Type, Id: o.Id, Data: o.Data}
+	option.Legend = &legend{
+		Type:   o.Type,
+		Id:     o.Id,
+		Left:   o.Left,
+		Top:    o.Top,
+		Right:  o.Right,
+		Bottom: o.Bottom,
+		Data:   o.Data,
+	}
 }
 
 // TooltipBaseOpt - ツールチップに関する設定
 type TooltipBaseOpt struct {
 	chartOpt
-	Trigger   TooltipTrigger // トリガー
-	Formatter string         // フォーマッター
+	Trigger         TooltipTrigger // トリガー
+	BackgroundColor string         // 背景色
+	BorderWidth     string         // 境界線の幅
+	BorderColor     string         // 境界線の色
+	Padding         string         // 余白
+	TextColor       string         // テキストの色
+	Formatter       string         // フォーマッター
 }
 
 func (o *TooltipBaseOpt) getChartOptType() string {
 	return "tooltipBase"
 }
 func (o *TooltipBaseOpt) setOpt(option *option) {
-	option.Tooltip = &tooltip{Trigger: o.Trigger, Formatter: o.Formatter}
+	option.Tooltip = &tooltip{
+		Trigger:         o.Trigger,
+		BackgroundColor: o.BackgroundColor,
+		BorderWidth:     o.BorderWidth,
+		BorderColor:     o.BorderColor,
+		Padding:         o.Padding,
+		TextStyle:       &textStyle{Color: o.TextColor},
+		Formatter:       o.Formatter,
+	}
 }
 
 // TooltipLinePointerOpt - ツールチップのラインポインタに関する設定
@@ -141,9 +181,9 @@ func (o *DatasetOpt) setOpt(option *option) {
 // DataZoomInsideOpt - チャート内のデータズームに関する設定
 type DataZoomInsideOpt struct {
 	chartOpt
-	XAxisIndex []int  //
-	Start      string //
-	End        string //
+	XAxisIndex []int //
+	Start      int   //
+	End        int   //
 }
 
 func (o *DataZoomInsideOpt) getChartOptType() string {
@@ -170,9 +210,10 @@ type DataZoomSliderOpt struct {
 	chartOpt
 	Show       Bool   // 表示するか
 	XAxisIndex []int  //
+	Top        string //
 	Bottom     string //
-	Start      string //
-	End        string //
+	Start      int    //
+	End        int    //
 	HandleIcon string //
 	HandleSize string //
 }
@@ -185,7 +226,7 @@ func (o *DataZoomSliderOpt) setOpt(option *option) {
 		option.DataZoom = make([]*dataZoom, 0)
 	}
 
-	d := &dataZoom{Type: "slider", Show: o.Show, XAxisIndex: o.XAxisIndex, Bottom: o.Bottom, Start: o.Start, End: o.End, HandleIcon: o.HandleIcon, HandleSize: o.HandleSize}
+	d := &dataZoom{Type: "slider", Show: o.Show, XAxisIndex: o.XAxisIndex, Top: o.Top, Bottom: o.Bottom, Start: o.Start, End: o.End, HandleIcon: o.HandleIcon, HandleSize: o.HandleSize}
 	for i, dataZoom := range option.DataZoom {
 		if dataZoom.Type == d.Type {
 			option.DataZoom[i] = d
@@ -194,4 +235,17 @@ func (o *DataZoomSliderOpt) setOpt(option *option) {
 	}
 
 	option.DataZoom = append(option.DataZoom, d)
+}
+
+// GlobalAxisPointer - 全体に反映される軸ポインタに関する設定
+type GlobalAxisPointer struct {
+	chartOpt
+	LinkXAxisIndex []int // リンクするX軸のインデックス
+}
+
+func (o *GlobalAxisPointer) getChartOptType() string {
+	return "globalAxisPointer"
+}
+func (o *GlobalAxisPointer) setOpt(option *option) {
+	option.AxisPointer = &axisPointer{Link: &link{XAxisIndex: o.LinkXAxisIndex}}
 }

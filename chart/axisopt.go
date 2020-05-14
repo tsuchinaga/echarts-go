@@ -37,6 +37,7 @@ func (o *AxisBaseOpt) setOpt(axis *axis) {
 type AxisPointerOpt struct {
 	axisOpt
 	Type AxisPointerType // 軸ポインタの種別
+	Z    int             // 奥行
 }
 
 func (o *AxisPointerOpt) getAxisOptType() string {
@@ -44,7 +45,7 @@ func (o *AxisPointerOpt) getAxisOptType() string {
 }
 
 func (o *AxisPointerOpt) setOpt(axis *axis) {
-	axis.AxisPointer = &axisPointer{Type: o.Type}
+	axis.AxisPointer = &axisPointer{Type: o.Type, Z: o.Z}
 }
 
 // AxisLabelOpt - 軸ラベルの設定

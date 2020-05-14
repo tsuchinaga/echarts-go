@@ -22,8 +22,8 @@ func candlestickLarge(w http.ResponseWriter, _ *http.Request) {
 			&chart.TooltipLinePointerOpt{},
 			&chart.GridOpt{Id: "grid1", Left: "10%", Right: "10%", Bottom: "200"},
 			&chart.GridOpt{Id: "grid2", Left: "10%", Right: "10%", Height: "80", Bottom: "80"},
-			&chart.DataZoomInsideOpt{XAxisIndex: []int{0, 1}, Start: "10", End: "100"},
-			&chart.DataZoomSliderOpt{Show: chart.True, XAxisIndex: []int{0, 1}, Bottom: "10", Start: "10", End: "100", HandleSize: "105%", HandleIcon: "M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z"}).
+			&chart.DataZoomInsideOpt{XAxisIndex: []int{0, 1}, Start: 10, End: 100},
+			&chart.DataZoomSliderOpt{Show: chart.True, XAxisIndex: []int{0, 1}, Bottom: "10", Start: 10, End: 100, HandleSize: "105%", HandleIcon: "M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z"}).
 		SetToolboxFeature(&chart.DataZoomFeatureOpt{YAxisIndex: chart.False}).
 		SetXAxis("x1", chart.AxisTypeCategory, nil,
 			&chart.AxisBaseOpt{Scale: chart.True, BoundaryGap: chart.False, SplitNumber: 20, Min: "dataMin", Max: "dataMax"}, &chart.AxisLineOpt{OnZero: chart.False}, &chart.SplitLineOpt{Show: chart.False}).

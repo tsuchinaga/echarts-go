@@ -36,6 +36,9 @@
     * [Large Scale Candlestick](https://echarts.apache.org/examples/en/editor.html?c=candlestick-large)
         * [http://localhost:8080/candlestick-large](http://localhost:8080/candlestick-large)
         * [candlesticklarge.go](candlesticklarge.go)
+    * [Candlestick Brush](https://echarts.apache.org/examples/en/editor.html?c=candlestick-brush)
+        * [http://localhost:8080/candlestick-brush](http://localhost:8080/candlestick-brush)
+        * [candlestickbrush.go](candlestickbrush.go)
 * Mixed
     * [Mixed Line and Bar](https://echarts.apache.org/examples/en/editor.html?c=mix-line-bar)
         * [http://localhost:8080/mix-line-bar](http://localhost:8080/mix-line-bar) 

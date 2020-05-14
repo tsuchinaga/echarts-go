@@ -86,3 +86,19 @@ func (o *RestoreFeatureOpt) setOpt(toolbox *toolbox) {
 	}
 	toolbox.Feature.Restore = &restoreFeature{Show: o.Show}
 }
+
+// BrushFeatureOpt - ブラシ機能に関する設定
+type BrushFeatureOpt struct {
+	toolboxOpt
+	Type []BrushType // ブラシのタイプ
+}
+
+func (o *BrushFeatureOpt) getToolboxOptType() string {
+	return "brush"
+}
+func (o *BrushFeatureOpt) setOpt(toolbox *toolbox) {
+	if toolbox.Feature == nil {
+		toolbox.Feature = new(toolboxFeature)
+	}
+	toolbox.Feature.Brush = &brushFeature{Type: o.Type}
+}
